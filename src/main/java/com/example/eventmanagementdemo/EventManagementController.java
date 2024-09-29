@@ -1,12 +1,21 @@
 package com.example.eventmanagementdemo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class EventManagementController {
+    @FXML
+    public Button editButton;
     @FXML
     private ListView<Event> eventsListView;
     @FXML
@@ -38,6 +47,17 @@ public class EventManagementController {
         dateTextField.setText(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
+    }
+
+    /*
+     * updates the text fields with the "" information.
+     */
+    private void clearEvent() {
+        nameTextField.setText("");
+        hostedByTextField.setText("");
+        dateTextField.setText("");
+        venueTextField.setText("");
+        phoneTextField.setText("");
     }
 
     /**
@@ -114,7 +134,8 @@ public class EventManagementController {
         // Get the selected contact from the list view
         Event selectedEvent = eventsListView.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            eventDAO.deleteEvent(selectedEvent.getId());
+            eventDAO.deleteEvent(selectedEvent);
+            clearEvent();
             syncEvents();
         }
     }
@@ -130,5 +151,13 @@ public class EventManagementController {
         // and focus the first name text field
         selectEvent(newEvent);
         nameTextField.requestFocus();
+    }
+
+    @FXML
+    public void onEditButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) editButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("event-details.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), EventManagementApplication.WIDTH, EventManagementApplication.HEIGHT);
+        stage.setScene(scene);
     }
 }
