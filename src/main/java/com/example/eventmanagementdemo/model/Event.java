@@ -1,4 +1,4 @@
-package com.example.eventmanagementdemo;
+package com.example.eventmanagementdemo.model;
 
 public class Event {
     private int id;
@@ -9,6 +9,7 @@ public class Event {
     private String phone;
 
     public Event(String eventName, String hostedBy, String date, String venue, String phone) {
+        // TODO: check the usage of ID as it has to be same as DB. (All args constructor)
         this.eventName = eventName;
         this.hostedBy = hostedBy;
         this.date = date;

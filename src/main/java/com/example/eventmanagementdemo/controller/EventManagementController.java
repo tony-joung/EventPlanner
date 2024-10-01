@@ -1,5 +1,9 @@
-package com.example.eventmanagementdemo;
+package com.example.eventmanagementdemo.controller;
 
+import com.example.eventmanagementdemo.model.Event;
+import com.example.eventmanagementdemo.EventManagementApplication;
+import com.example.eventmanagementdemo.model.IEventDAO;
+import com.example.eventmanagementdemo.model.SqliteEventDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +36,8 @@ public class EventManagementController {
     private final IEventDAO eventDAO;
 
     public EventManagementController() {
-        eventDAO = new EventDAOImpl();
+
+        eventDAO = new SqliteEventDao();
     }
 
     /**

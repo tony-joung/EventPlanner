@@ -1,9 +1,12 @@
 package com.example.eventmanagementdemo;
 
+import com.example.eventmanagementdemo.model.Event;
+import com.example.eventmanagementdemo.model.IEventDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDAOImpl implements IEventDAO{
+public class EventDAOImpl implements IEventDAO {
 
     /**
      * A static list of contacts to be used as a mock database.
@@ -13,9 +16,9 @@ public class EventDAOImpl implements IEventDAO{
 
     public EventDAOImpl() {
         // Add some initial contacts to the mock database
-        addEvent(new Event("Event1", "Host1", "23/10/2025", "Venue1", "12345"));
+        /*addEvent(new Event("Event1", "Host1", "23/10/2025", "Venue1", "12345"));
         addEvent(new Event("Event2", "Host2", "24/10/2025", "Venue2", "12345"));
-        addEvent(new Event("Event3", "Host3", "25/10/2025", "Venue3", "12345"));
+        addEvent(new Event("Event3", "Host3", "25/10/2025", "Venue3", "12345"));*/
 
     }
 
@@ -56,11 +59,11 @@ public class EventDAOImpl implements IEventDAO{
     /**
      * Delete the event whose id was provided.
      *
-     * @param id : Id of the event to be deleted.
+     * @param event : event to be deleted.
      */
     @Override
-    public void deleteEvent(int id) {
-        eventList.remove(id);
+    public void deleteEvent(Event event) {
+        eventList.remove(event);
     }
 
     /**
