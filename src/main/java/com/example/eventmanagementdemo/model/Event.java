@@ -1,5 +1,8 @@
 package com.example.eventmanagementdemo.model;
 
+/**
+ * A simple model class representing a event with basic details.
+ */
 public class Event {
     private int id;
     private String eventName;
@@ -8,6 +11,14 @@ public class Event {
     private String venue;
     private String phone;
 
+    /**
+     * Constructor for the event
+     * @param eventName The name of the event
+     * @param hostedBy The host of the event
+     * @param date the date on which event will be held
+     * @param venue the venue of the event
+     * @param phone the contact number
+     */
     public Event(String eventName, String hostedBy, String date, String venue, String phone) {
         // TODO: check the usage of ID as it has to be same as DB. (All args constructor)
         this.eventName = eventName;
@@ -17,14 +28,26 @@ public class Event {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return the eventId
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Set the id
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * get the eventname
+     * @return the name of the event
+     */
     public String getEventName() {
         return eventName;
     }

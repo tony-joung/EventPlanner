@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The file to perform the DB operations.
+ */
+
 public class SqliteEventDao implements IEventDAO{
 
     private final Connection connection;
@@ -74,6 +78,7 @@ public class SqliteEventDao implements IEventDAO{
     }
 
     /**
+     * Get the list of events available.
      * @return all the events available in the table.
      */
     @Override
@@ -101,6 +106,7 @@ public class SqliteEventDao implements IEventDAO{
     }
 
     /**
+     * get the event based on the ID
      * @param id : Id of the event to be retrieved
      * @return event : the details of the selected event.
      */
