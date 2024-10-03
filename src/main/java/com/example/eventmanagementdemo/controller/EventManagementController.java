@@ -8,10 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -19,7 +16,7 @@ import java.io.IOException;
 
 public class EventManagementController {
     @FXML
-    public Button editButton;
+    public Button addButton;
     @FXML
     private ListView<Event> eventsListView;
     @FXML
@@ -41,7 +38,7 @@ public class EventManagementController {
     }
 
     /**
-     * Programmatically selects a event in the list view and
+     * Programmatically selects an event in the list view and
      * updates the text fields with the event's information.
      * @param event The event to select.
      */
@@ -117,20 +114,24 @@ public class EventManagementController {
     }
 
     /**
-     * onEditConfirm update the event after editing
+     * Load the event-details.fxml with selected event.
      */
     @FXML
-    private void onEditConfirm() {
+    private void onEditClick() throws IOException {
         // Get the selected contact from the list view
         Event selectedEvent = eventsListView.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            selectedEvent.setEventName(nameTextField.getText());
-            selectedEvent.setHostedBy(hostedByTextField.getText());
-            selectedEvent.setDate(dateTextField.getText());
-            selectedEvent.setVenue(venueTextField.getText());
-            selectedEvent.setPhone(phoneTextField.getText());
-            eventDAO.updateEvent(selectedEvent);
-            syncEvents();
+            Stage stage = (Stage) addButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("event-details.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), EventManagementApplication.WIDTH, EventManagementApplication.HEIGHT);
+            EventDetailsController eventDetailsController = fxmlLoader.getController();
+            eventDetailsController.initData(selectedEvent);
+            stage.setScene(scene);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning message");
+            alert.setContentText("Please select a event to edit");
+            alert.show();
         }
     }
 
@@ -145,7 +146,7 @@ public class EventManagementController {
         }
     }
 
-    @FXML
+    /*@FXML
     private void onAdd() {
                 Event newEvent = new Event(nameTextField.getText(), hostedByTextField.getText(),
                 dateTextField.getText(), venueTextField.getText(), phoneTextField.getText());
@@ -156,11 +157,11 @@ public class EventManagementController {
         // and focus the first name text field
         selectEvent(newEvent);
         nameTextField.requestFocus();
-    }
+    }*/
 
     @FXML
-    public void onEditButtonClick(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) editButton.getScene().getWindow();
+    public void onAddButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) addButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("event-details.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), EventManagementApplication.WIDTH, EventManagementApplication.HEIGHT);
         stage.setScene(scene);
