@@ -18,6 +18,8 @@ public class EventManagementController {
     @FXML
     public Button addButton;
     @FXML
+    public TextField priceTextField;
+    @FXML
     private ListView<Event> eventsListView;
     @FXML
     private TextField nameTextField;
@@ -49,6 +51,7 @@ public class EventManagementController {
         dateTextField.setText(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
+        priceTextField.setText(event.getPrice());
     }
 
     /*
@@ -60,6 +63,7 @@ public class EventManagementController {
         dateTextField.setText("");
         venueTextField.setText("");
         phoneTextField.setText("");
+        priceTextField.setText("");
     }
 
     /**
@@ -143,6 +147,11 @@ public class EventManagementController {
             eventDAO.deleteEvent(selectedEvent);
             clearEvent();
             syncEvents();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning message");
+            alert.setContentText("Please select a event to edit");
+            alert.show();
         }
     }
 

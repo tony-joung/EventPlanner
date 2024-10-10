@@ -28,6 +28,8 @@ public class EventDetailsController {
     private TextField venueTextField;
     @FXML
     private TextField phoneTextField;
+    @FXML
+    private TextField priceTextField;
 
     private Event selectedEvent;
 
@@ -58,6 +60,7 @@ public class EventDetailsController {
         dateTextField.setText(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
+        priceTextField.setText(event.getPrice());
     }
 
     /**
@@ -66,7 +69,7 @@ public class EventDetailsController {
      */
     public void onnSaveConfirm(ActionEvent actionEvent) {
         Event newEvent = new Event(nameTextField.getText(), hostedByTextField.getText(),
-                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText());
+                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText() );
         // save to the database based on the need.
         try {
             if (selectedEvent != null) {
@@ -89,7 +92,7 @@ public class EventDetailsController {
     private void onUpdate() throws IOException {
         // Get the selected contact from the list view
         Event updatedEvent = new Event(nameTextField.getText(), hostedByTextField.getText(),
-                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText());
+                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText());
         updatedEvent.setId(this.selectedEvent.getId());
         eventDAO.updateEvent(updatedEvent);
         this.selectedEvent = null;
@@ -105,6 +108,7 @@ public class EventDetailsController {
         dateTextField.setText("");
         venueTextField.setText("");
         phoneTextField.setText("");
+        priceTextField.setText("");
     }
 
     /***

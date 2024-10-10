@@ -9,7 +9,7 @@ class EventTest {
 
     @BeforeEach
     void setUp() {
-        event = new Event("event1", "host1", "23/10/2024", "venue1", "123456");
+        event = new Event("event1", "host1", "23/10/2024", "venue1", "123456", "$23");
     }
 
     @Test
@@ -75,5 +75,11 @@ class EventTest {
     void setPhone() {
         event.setPhone("phone2");
         assertEquals("phone2", event.getPhone());
+    }
+
+    @Test
+    void setPrice() {
+        event.setPrice("price2");
+        assertEquals("price2", event.getPrice());
     }
 }
