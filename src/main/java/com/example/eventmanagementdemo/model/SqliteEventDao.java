@@ -1,6 +1,7 @@
 package com.example.eventmanagementdemo.model;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class SqliteEventDao implements IEventDAO{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, event.getEventName());
             statement.setString(2, event.getHostedBy());
-            statement.setString(3, event.getDate());
+            statement.setString(3, event.getDate().toString());
             statement.setString(4, event.getVenue());
             statement.setString(5, event.getPhone());
             statement.setString(6, event.getPrice());
@@ -94,11 +95,11 @@ public class SqliteEventDao implements IEventDAO{
                 int id = resultSet.getInt("id");
                 String eventName = resultSet.getString("eventName");
                 String hostedBy = resultSet.getString("hostedBy");
-                String date = resultSet.getString("date");
+                Date date = Date.valueOf( resultSet.getString("date"));
                 String venue = resultSet.getString("venue");
                 String phone = resultSet.getString("phone");
                 String price = resultSet.getString("price");
-                Event event = new Event(eventName, hostedBy, date, venue, phone, price);
+                Event event = new Event(eventName, hostedBy, date.toLocalDate(), venue, phone, price);
                 event.setId(id);
                 eventList.add(event);
             }
@@ -122,11 +123,11 @@ public class SqliteEventDao implements IEventDAO{
             if (resultSet.next()) {
                 String eventName = resultSet.getString("eventName");
                 String hostedBy = resultSet.getString("hostedBy");
-                String date = resultSet.getString("date");
+                Date date = Date.valueOf(resultSet.getString("date"));
                 String venue = resultSet.getString("venue");
                 String phone = resultSet.getString("phone");
                 String price = resultSet.getString("price");
-                Event event = new Event(eventName, hostedBy, date, venue, phone, price);
+                Event event = new Event(eventName, hostedBy, date.toLocalDate(), venue, phone, price);
                 event.setId(id);
                 return event;
             }
@@ -161,7 +162,7 @@ public class SqliteEventDao implements IEventDAO{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, event.getEventName());
             statement.setString(2, event.getHostedBy());
-            statement.setString(3, event.getDate());
+            statement.setString(3, event.getDate().toString());
             statement.setString(4, event.getVenue());
             statement.setString(5, event.getPhone());
             statement.setString(6, event.getPrice());

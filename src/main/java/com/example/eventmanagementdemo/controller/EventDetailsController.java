@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class EventDetailsController {
 
@@ -23,7 +25,7 @@ public class EventDetailsController {
     @FXML
     private TextField hostedByTextField;
     @FXML
-    private TextField dateTextField;
+    private DatePicker dateTextField;
     @FXML
     private TextField venueTextField;
     @FXML
@@ -57,7 +59,7 @@ public class EventDetailsController {
     private void setEventDetails(Event event) {
         nameTextField.setText(event.getEventName());
         hostedByTextField.setText(event.getHostedBy());
-        dateTextField.setText(event.getDate());
+        dateTextField.setValue(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
         priceTextField.setText(event.getPrice());
@@ -69,7 +71,7 @@ public class EventDetailsController {
      */
     public void onnSaveConfirm(ActionEvent actionEvent) {
         Event newEvent = new Event(nameTextField.getText(), hostedByTextField.getText(),
-                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText() );
+                dateTextField.getValue(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText() );
         // save to the database based on the need.
         try {
             if (selectedEvent != null) {
@@ -92,7 +94,7 @@ public class EventDetailsController {
     private void onUpdate() throws IOException {
         // Get the selected contact from the list view
         Event updatedEvent = new Event(nameTextField.getText(), hostedByTextField.getText(),
-                dateTextField.getText(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText());
+                dateTextField.getValue(), venueTextField.getText(), phoneTextField.getText(), priceTextField.getText());
         updatedEvent.setId(this.selectedEvent.getId());
         eventDAO.updateEvent(updatedEvent);
         this.selectedEvent = null;
@@ -105,7 +107,7 @@ public class EventDetailsController {
     private void clearEvent() {
         nameTextField.setText("");
         hostedByTextField.setText("");
-        dateTextField.setText("");
+        dateTextField.setValue(LocalDate.now());
         venueTextField.setText("");
         phoneTextField.setText("");
         priceTextField.setText("");

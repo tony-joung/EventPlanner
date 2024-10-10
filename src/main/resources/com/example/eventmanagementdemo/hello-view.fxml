@@ -35,7 +35,7 @@
                 <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                 <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" disable="true"/>
                 <TextField fx:id="hostedByTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true"/>
-                <TextField fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" disable="true"/>
+                <DatePicker fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" disable="true"/>
                 <TextField fx:id="venueTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" disable="true" />
                 <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" disable="true" />
                 <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" disable="true" />

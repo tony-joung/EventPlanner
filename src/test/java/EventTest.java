@@ -2,6 +2,8 @@ import com.example.eventmanagementdemo.model.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 class EventTest {
 
@@ -9,7 +11,7 @@ class EventTest {
 
     @BeforeEach
     void setUp() {
-        event = new Event("event1", "host1", "23/10/2024", "venue1", "123456", "$23");
+        event = new Event("event1", "host1", LocalDate.now(), "venue1", "123456", "$23");
     }
 
     @Test
@@ -46,13 +48,13 @@ class EventTest {
 
     @Test
     void getDate() {
-        assertEquals("23/10/2024", event.getDate());
+        assertEquals(LocalDate.now(), event.getDate());
     }
 
     @Test
     void setDate() {
-        event.setDate("24/11/2024");
-        assertEquals("24/11/2024", event.getDate());
+        event.setDate(LocalDate.now());
+        assertEquals(LocalDate.now(), event.getDate());
     }
 
     @Test

@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class EventManagementController {
     @FXML
@@ -26,7 +27,7 @@ public class EventManagementController {
     @FXML
     private TextField hostedByTextField;
     @FXML
-    private TextField dateTextField;
+    private DatePicker dateTextField;
     @FXML
     private TextField venueTextField;
     @FXML
@@ -48,7 +49,7 @@ public class EventManagementController {
         eventsListView.getSelectionModel().select(event);
         nameTextField.setText(event.getEventName());
         hostedByTextField.setText(event.getHostedBy());
-        dateTextField.setText(event.getDate());
+        dateTextField.setValue(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
         priceTextField.setText(event.getPrice());
@@ -60,7 +61,7 @@ public class EventManagementController {
     private void clearEvent() {
         nameTextField.setText("");
         hostedByTextField.setText("");
-        dateTextField.setText("");
+        dateTextField.setValue(LocalDate.now());
         venueTextField.setText("");
         phoneTextField.setText("");
         priceTextField.setText("");
