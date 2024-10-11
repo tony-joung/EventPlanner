@@ -42,7 +42,7 @@ class EventTest {
 
     @Test
     void setHostedBy() {
-        event.setHostedBy("host3");
+        event.setHostedBy("host2");
         assertEquals("host2", event.getHostedBy());
     }
 
