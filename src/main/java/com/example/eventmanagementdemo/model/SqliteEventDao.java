@@ -26,7 +26,7 @@ public class SqliteEventDao implements IEventDAO{
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "eventName VARCHAR NOT NULL,"
                     + "hostedBy VARCHAR NOT NULL,"
-                    + "date VARCHAR NOT NULL,"
+                    + "date DATE NOT NULL,"
                     + "venue VARCHAR NOT NULL,"
                     + "phone VARCHAR NOT NULL,"
                     + "price VARCHAR NOT NULL"
@@ -88,7 +88,7 @@ public class SqliteEventDao implements IEventDAO{
         List<Event> eventList = new ArrayList<>();
         try {
             Statement getStatement = connection.createStatement();
-            String query = "SELECT * FROM events";
+            String query = "SELECT * FROM events ORDER BY date";
             ResultSet resultSet = getStatement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
