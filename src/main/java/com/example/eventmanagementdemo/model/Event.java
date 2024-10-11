@@ -10,6 +10,7 @@ public class Event {
     private String date;
     private String venue;
     private String phone;
+    private String price;
 
     /**
      * Constructor for the event
@@ -18,14 +19,16 @@ public class Event {
      * @param date the date on which event will be held
      * @param venue the venue of the event
      * @param phone the contact number
+     * @param
      */
-    public Event(String eventName, String hostedBy, String date, String venue, String phone) {
+    public Event(String eventName, String hostedBy, String date, String venue, String phone, String price) {
         // TODO: check the usage of ID as it has to be same as DB. (All args constructor)
         this.eventName = eventName;
         this.hostedBy = hostedBy;
         this.date = date;
         this.venue = venue;
         this.phone = phone;
+        this.price = price;
     }
 
     /**
@@ -86,5 +89,13 @@ public class Event {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
