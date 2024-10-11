@@ -166,7 +166,7 @@ public class SqliteEventDao implements IEventDAO{
             statement.setString(4, event.getVenue());
             statement.setString(5, event.getPhone());
             statement.setString(6, event.getPrice());
-            statement.setString(6, String.valueOf(event.getId()));
+            statement.setString(7, String.valueOf(event.getId()));
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
