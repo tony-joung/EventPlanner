@@ -28,7 +28,8 @@ public class SqliteEventDao implements IEventDAO{
                     + "hostedBy VARCHAR NOT NULL,"
                     + "date VARCHAR NOT NULL,"
                     + "venue VARCHAR NOT NULL,"
-                    + "phone VARCHAR NOT NULL"
+                    + "phone VARCHAR NOT NULL,"
+                    + "price VARCHAR NOT NULL"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -57,7 +58,7 @@ public class SqliteEventDao implements IEventDAO{
      */
     @Override
     public void addEvent(Event event) {
-        String query = "INSERT INTO events (eventName, hostedBy, date, venue, phone) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO events (eventName, hostedBy, date, venue, phone, price) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, event.getEventName());
@@ -65,6 +66,7 @@ public class SqliteEventDao implements IEventDAO{
             statement.setString(3, event.getDate());
             statement.setString(4, event.getVenue());
             statement.setString(5, event.getPhone());
+            statement.setString(6, event.getPrice());
             statement.executeUpdate();
             // Set the id of the new event
             ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -95,7 +97,8 @@ public class SqliteEventDao implements IEventDAO{
                 String date = resultSet.getString("date");
                 String venue = resultSet.getString("venue");
                 String phone = resultSet.getString("phone");
-                Event event = new Event(eventName, hostedBy, date, venue, phone);
+                String price = resultSet.getString("price");
+                Event event = new Event(eventName, hostedBy, date, venue, phone, price);
                 event.setId(id);
                 eventList.add(event);
             }
@@ -122,7 +125,8 @@ public class SqliteEventDao implements IEventDAO{
                 String date = resultSet.getString("date");
                 String venue = resultSet.getString("venue");
                 String phone = resultSet.getString("phone");
-                Event event = new Event(eventName, hostedBy, date, venue, phone);
+                String price = resultSet.getString("price");
+                Event event = new Event(eventName, hostedBy, date, venue, phone, price);
                 event.setId(id);
                 return event;
             }
@@ -151,7 +155,7 @@ public class SqliteEventDao implements IEventDAO{
      */
     @Override
     public void updateEvent(Event event) {
-        String query = "UPDATE events SET eventName = ?, hostedBy = ?, date = ?, venue = ?, phone = ? WHERE id = ?";
+        String query = "UPDATE events SET eventName = ?, hostedBy = ?, date = ?, venue = ?, phone = ?, price = ? WHERE id = ?";
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -160,6 +164,7 @@ public class SqliteEventDao implements IEventDAO{
             statement.setString(3, event.getDate());
             statement.setString(4, event.getVenue());
             statement.setString(5, event.getPhone());
+            statement.setString(6, event.getPrice());
             statement.setString(6, String.valueOf(event.getId()));
             statement.executeUpdate();
         } catch (SQLException e) {
