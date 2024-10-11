@@ -32,11 +32,13 @@
                 <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <Label text="Venue:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
                 <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                 <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" disable="true"/>
                 <TextField fx:id="hostedByTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true"/>
                 <TextField fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" disable="true"/>
                 <TextField fx:id="venueTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" disable="true" />
                 <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" disable="true" />
+                <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" disable="true" />
             </GridPane>
             <HBox spacing="10.0" alignment="CENTER">
                 <Button text="Edit" onAction="#onEditClick"/>
