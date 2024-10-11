@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.eventmanagementdemo.controller.EventManagementController"
+>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Select a Event to view or edit." />
+    <HBox VBox.vgrow="ALWAYS" spacing="20.0">
+        <VBox spacing="10.0">
+            <ListView fx:id="eventsListView"  />
+            <Button fx:id= "addButton" text="New" maxWidth="Infinity" onAction="#onAddButtonClick"/>
+        </VBox>
+        <VBox spacing="10.0" prefWidth="400" >
+            <Label text="Details of the selected event" />
+            <GridPane hgap="5.0" vgap="5.0" >
+                <columnConstraints>
+                    <ColumnConstraints minWidth="70" />
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="Hosted By" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label text="Venue:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" disable="true"/>
+                <TextField fx:id="hostedByTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true"/>
+                <TextField fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" disable="true"/>
+                <TextField fx:id="venueTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" disable="true" />
+                <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" disable="true" />
+                <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" disable="true" />
+            </GridPane>
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button text="Edit" onAction="#onEditClick"/>
+                <Button text="Delete" onAction="#onDelete"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
+
