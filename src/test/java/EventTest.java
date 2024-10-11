@@ -9,7 +9,7 @@ class EventTest {
 
     @BeforeEach
     void setUp() {
-        event = new Event("event1", "host1", "23/10/2024", "venue1", "123456");
+        event = new Event("event1", "host1", "23/10/2024", "venue1", "123456", "$23");
     }
 
     @Test
