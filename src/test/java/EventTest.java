@@ -64,7 +64,7 @@ class EventTest {
 
     @Test
     void setVenue() {
-        event.setVenue("venue2");
+        event.setVenue("venue6");
         assertEquals("venue2", event.getVenue());
     }
 
