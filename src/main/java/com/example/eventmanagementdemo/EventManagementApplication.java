@@ -14,7 +14,7 @@ public class EventManagementApplication extends Application {
     public static final int HEIGHT = 360;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("login-page.fxml"));
         //String stylesheet = EventManagementApplication.class.getResource("main.css").toExternalForm();
         Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         //scene.getStylesheets().add(stylesheet);

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.eventmanagementdemo.controller.LoginPageController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <HBox VBox.vgrow="ALWAYS" spacing="20.0" alignment="CENTER">
+        <VBox spacing="10.0" prefWidth="400" alignment="CENTER" style="-fx-background-color: #f5f5f5; -fx-padding: 20; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <HBox spacing="10.0" alignment="CENTER">
+                <GridPane hgap="5.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <Label text="Username:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label text="Password:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label text="Role:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+                    <TextField fx:id="UserNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" promptText="Enter username"/>
+                    <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Enter password"/>
+
+                    <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Host"/>
+                                <String fx:value="Participant"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </GridPane>
+            </HBox>
+
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button text="Sign In" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#handleSignIn" />
+                <Button text="Register" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#handleRegister" />
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>

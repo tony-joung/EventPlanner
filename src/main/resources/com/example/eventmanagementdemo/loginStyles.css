@@ -1,0 +1,30 @@
+/* loginStyles.css */
+
+.vbox {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.label {
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-min-width: 100;
+}
+
+.button.sign-in {
+    -fx-background-color: #4CAF50; /* Green */
+}
+
+.button.register {
+    -fx-background-color: #2196F3; /* Blue */
+}
+
+.text-field, .password-field, .combo-box {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+}
