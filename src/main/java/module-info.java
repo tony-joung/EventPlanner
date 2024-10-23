@@ -2,6 +2,7 @@ module com.example.eventmanagementdemo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires io.javalin;
 
 
     opens com.example.eventmanagementdemo to javafx.fxml;
