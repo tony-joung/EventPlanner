@@ -72,7 +72,7 @@ public class MenuPageController {
     }
 
     public void handleLogout(ActionEvent actionEvent) {
-        navigateTo(eventsButton, "com/example/eventmanagementdemo/login-page.fxml");
+        navigateTo(eventsButton, "login-page.fxml");
     }
 
     public void handleBookings(ActionEvent actionEvent) {
