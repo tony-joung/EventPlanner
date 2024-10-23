@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.eventmanagementdemo.controller.EventDetailsController"
+            prefHeight="500.0" prefWidth="700.0"
+            styleClass="root">
+
+    <VBox spacing="20.0" styleClass="vbox">
+
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Button fx:id="backButton" text="Back" onAction="#onBackButtonClick" styleClass="button"/>
+            <Label text="Enter the Event Details Below" styleClass="header-label"/>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" prefHeight="300.0" prefWidth="600.0" styleClass="scroll-pane">
+            <GridPane hgap="10.0" vgap="10.0" styleClass="details-grid">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Hosted By:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label text="Venue:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" styleClass="text-field"/>
+                <TextField fx:id="hostedByTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="text-field"/>
+                <DatePicker fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="date-picker"/>
+                <TextField fx:id="venueTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="text-field"/>
+                <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="text-field"/>
+                <Label text="Ticket Types:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="5" spacing="10.0">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Ticket Type" prefWidth="150.0" styleClass="subheader-label"/>
+                        <Label text="Count" prefWidth="100.0" styleClass="subheader-label"/>
+                        <Label text="Price" prefWidth="100.0" styleClass="subheader-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <VBox fx:id="ticketOptionsVBox" spacing="5.0">
+                        <!-- Dynamic ticket option entries will be added here -->
+                    </VBox>
+                    <Button text="Add Ticket Type" onAction="#addTicketType" styleClass="button"/>
+                </VBox>
+            </GridPane>
+        </ScrollPane>
+
+        <HBox spacing="5.0" alignment="CENTER">
+            <Button text="Confirm" onAction="#onnSaveConfirm" styleClass="button"/>
+            <Button fx:id="cancelButton" text="Cancel" onAction="#onCancelClick" styleClass="button"/>
+        </HBox>
+    </VBox>
+
+</AnchorPane>

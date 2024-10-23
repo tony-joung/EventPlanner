@@ -1,0 +1,53 @@
+
+.back-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 12px; /* Smaller font size */
+    -fx-padding: 5 10; /* Smaller padding */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.buy-button{
+    -fx-background-color: #5bc0de;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.buy-button:hover {
+    -fx-background-color: #45bee1;
+}
+
+
+.app-button {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-text-fill: #333333; /* Dark text color */
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: #333333; /* Dark border */
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.app-button:hover {
+    -fx-background-color: transparent; /* Keep background transparent on hover */
+    -fx-text-fill: #007bff; /* Primary blue text on hover */
+    -fx-border-color: #007bff; /* Primary blue border on hover */
+}
+
+.no-message-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ff0000;
+    -fx-font-weight: bold;
+}

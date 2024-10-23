@@ -10,4 +10,16 @@ module com.example.eventmanagementdemo {
     opens com.example.eventmanagementdemo.controller to javafx.fxml;
     exports com.example.eventmanagementdemo.model;
     opens com.example.eventmanagementdemo.model to javafx.fxml;
+    exports com.example.eventmanagementdemo.dao.event;
+    opens com.example.eventmanagementdemo.dao.event to javafx.fxml;
+    exports com.example.eventmanagementdemo.dao.role;
+    opens com.example.eventmanagementdemo.dao.role to javafx.fxml;
+    exports com.example.eventmanagementdemo.dao.user;
+    opens com.example.eventmanagementdemo.dao.user to javafx.fxml;
+    exports com.example.eventmanagementdemo.sqlite;
+    opens com.example.eventmanagementdemo.sqlite to javafx.fxml;
+    exports com.example.eventmanagementdemo.service;
+    opens com.example.eventmanagementdemo.service to javafx.fxml;
+    exports com.example.eventmanagementdemo.utils;
+    opens com.example.eventmanagementdemo.utils to javafx.fxml;
 }

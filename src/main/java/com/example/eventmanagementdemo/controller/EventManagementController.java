@@ -2,8 +2,11 @@ package com.example.eventmanagementdemo.controller;
 
 import com.example.eventmanagementdemo.model.Event;
 import com.example.eventmanagementdemo.EventManagementApplication;
-import com.example.eventmanagementdemo.model.IEventDAO;
-import com.example.eventmanagementdemo.model.SqliteEventDao;
+import com.example.eventmanagementdemo.dao.event.IEventDAO;
+import com.example.eventmanagementdemo.dao.event.EventDAOImpl;
+import com.example.eventmanagementdemo.model.User;
+import com.example.eventmanagementdemo.sqlite.SqliteConnection;
+import com.example.eventmanagementdemo.utils.BackButtonListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +16,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.time.LocalDate;
+import java.util.function.Consumer;
 
-public class EventManagementController {
+import static com.example.eventmanagementdemo.utils.Utils.navigateTo;
+import static com.example.eventmanagementdemo.utils.Utils.navigateWithInitialData;
+
+public class EventManagementController implements BackButtonListener {
     @FXML
     public Button addButton;
-    @FXML
-    public TextField priceTextField;
     @FXML
     private ListView<Event> eventsListView;
     @FXML
@@ -26,17 +33,19 @@ public class EventManagementController {
     @FXML
     private TextField hostedByTextField;
     @FXML
-    private TextField dateTextField;
+    private DatePicker dateTextField;
     @FXML
     private TextField venueTextField;
     @FXML
     private TextField phoneTextField;
 
     private final IEventDAO eventDAO;
+    private User user;
+    private Scene previousScene;
 
     public EventManagementController() {
-
-        eventDAO = new SqliteEventDao();
+        Connection connection = SqliteConnection.getInstance();
+        eventDAO = new EventDAOImpl(connection);
     }
 
     /**
@@ -48,10 +57,9 @@ public class EventManagementController {
         eventsListView.getSelectionModel().select(event);
         nameTextField.setText(event.getEventName());
         hostedByTextField.setText(event.getHostedBy());
-        dateTextField.setText(event.getDate());
+        dateTextField.setValue(event.getDate());
         venueTextField.setText(event.getVenue());
         phoneTextField.setText(event.getPhone());
-        priceTextField.setText(event.getPrice());
     }
 
     /*
@@ -60,10 +68,9 @@ public class EventManagementController {
     private void clearEvent() {
         nameTextField.setText("");
         hostedByTextField.setText("");
-        dateTextField.setText("");
+        dateTextField.setValue(LocalDate.now());
         venueTextField.setText("");
         phoneTextField.setText("");
-        priceTextField.setText("");
     }
 
     /**
@@ -126,10 +133,14 @@ public class EventManagementController {
         Event selectedEvent = eventsListView.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
             Stage stage = (Stage) addButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("event-details.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("eventdetail/event-details.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), EventManagementApplication.WIDTH, EventManagementApplication.HEIGHT);
+            String css = EventManagementApplication.class.getResource("eventdetail/event-details.css").toExternalForm();
+            scene.getStylesheets().add(css);
             EventDetailsController eventDetailsController = fxmlLoader.getController();
             eventDetailsController.initData(selectedEvent);
+            eventDetailsController.setPreviousScene(addButton.getScene());
+            eventDetailsController.setBackButtonListener(this);
             stage.setScene(scene);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -169,10 +180,38 @@ public class EventManagementController {
     }*/
 
     @FXML
-    public void onAddButtonClick(ActionEvent actionEvent) throws IOException {
+    public void onAddButtonClick(ActionEvent actionEvent)  {
+        Consumer<FXMLLoader> loader = (fxmlLoader) -> {
+            EventDetailsController eventDetailsController = fxmlLoader.getController();
+            eventDetailsController.setPreviousScene(addButton.getScene());
+            eventDetailsController.setBackButtonListener(this);
+        };
+        navigateWithInitialData(addButton, "eventdetail/event-details.fxml", "eventdetail/event-details.css",loader);
+    }
+
+    public void onBackButtonClick(ActionEvent actionEvent) {
         Stage stage = (Stage) addButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(EventManagementApplication.class.getResource("event-details.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), EventManagementApplication.WIDTH, EventManagementApplication.HEIGHT);
-        stage.setScene(scene);
+        if (previousScene != null) {
+            stage.setScene(previousScene);
+        } else {
+            Consumer<FXMLLoader> loader = (fxmlLoader) -> {
+                MenuPageController menuPageController = fxmlLoader.getController();
+                menuPageController.initData(user);
+            };
+            navigateWithInitialData(addButton, "menu/menu-page.fxml", "menu/menu.css",loader);
+        }
+    }
+
+    public void initData(User user) {
+        this.user = user;
+    }
+
+    public void setPreviousScene(Scene scene) {
+        this.previousScene = scene;
+    }
+
+    @Override
+    public void onBackButtonPressed() {
+        syncEvents();
     }
 }

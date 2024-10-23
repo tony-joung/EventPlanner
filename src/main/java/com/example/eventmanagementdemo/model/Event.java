@@ -1,5 +1,7 @@
 package com.example.eventmanagementdemo.model;
 
+import java.time.LocalDate;
+
 /**
  * A simple model class representing a event with basic details.
  */
@@ -7,10 +9,9 @@ public class Event {
     private int id;
     private String eventName;
     private String hostedBy;
-    private String date;
+    private LocalDate date;
     private String venue;
     private String phone;
-    private String price;
 
     /**
      * Constructor for the event
@@ -19,16 +20,14 @@ public class Event {
      * @param date the date on which event will be held
      * @param venue the venue of the event
      * @param phone the contact number
-     * @param
      */
-    public Event(String eventName, String hostedBy, String date, String venue, String phone, String price) {
+    public Event(String eventName, String hostedBy, LocalDate date, String venue, String phone) {
         // TODO: check the usage of ID as it has to be same as DB. (All args constructor)
         this.eventName = eventName;
         this.hostedBy = hostedBy;
         this.date = date;
         this.venue = venue;
         this.phone = phone;
-        this.price = price;
     }
 
     /**
@@ -41,7 +40,7 @@ public class Event {
 
     /**
      * Set the id
-     * @param id
+     * @param id to be set
      */
     public void setId(int id) {
         this.id = id;
@@ -67,11 +66,11 @@ public class Event {
         this.hostedBy = hostedBy;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -89,13 +88,5 @@ public class Event {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.eventmanagementdemo.controller.BookingPageController"
+            prefHeight="400.0" prefWidth="600.0"
+            styleClass="root">
+
+    <VBox spacing="20.0" alignment="TOP_CENTER" fillWidth="true">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+
+        <HBox spacing="10" alignment="TOP_CENTER" prefWidth="600.0">
+            <Button text="Back" onAction="#onBackButtonClick" styleClass="back-button" />
+            <Label text="Book Tickets for Event" styleClass="heading-label" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+            <Button text="Book Tickets" onAction="#onBookTickets" styleClass="button" />
+        </HBox>
+
+        <GridPane hgap="10.0" vgap="10.0" alignment="CENTER_LEFT" styleClass="grid-pane">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" />
+                <ColumnConstraints halignment="LEFT" />
+            </columnConstraints>
+            <Label text="Event Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="eventNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="Venue:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label fx:id="venueLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="dateLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        </GridPane>
+
+        <!-- Ticket Selection -->
+        <Label text="Select Ticket Type and Quantity" styleClass="subheading-label"/>
+        <TableView fx:id="ticketTableView" prefHeight="200.0" prefWidth="600.0" styleClass="table-view">
+            <columns>
+                <TableColumn text="Ticket Type" fx:id="ticketTypeColumn" prefWidth="200.0" />
+                <TableColumn text="Price" fx:id="priceColumn" prefWidth="100.0" />
+                <TableColumn text="Available" fx:id="availableColumn" prefWidth="100.0" />
+                <TableColumn text="Quantity" fx:id="quantityColumn" prefWidth="100.0">
+<!--                    <style>-->
+<!--                        -fx-background-color: lightyellow;-->
+<!--                    </style>-->
+                </TableColumn>
+            </columns>
+        </TableView>
+
+    </VBox>
+</AnchorPane>

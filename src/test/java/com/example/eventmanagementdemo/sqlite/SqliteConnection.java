@@ -1,4 +1,4 @@
-package com.example.eventmanagementdemo.model;
+package com.example.eventmanagementdemo.sqlite;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class SqliteConnection {
     private static Connection instance = null;
 
     private SqliteConnection() {
-        String url = "jdbc:sqlite:eventList.db";
+        String url = "jdbc:sqlite::memory:";
         try {
             instance = DriverManager.getConnection(url);
         } catch (SQLException sqlEx) {
