@@ -114,7 +114,7 @@ public class RegisterUserController {
     }
 
     private void navigateToLoginPage() {
-        navigateTo(roleComboBox, "login-page.fxml");
+        navigateTo(roleComboBox, "com/example/eventmanagementdemo/login-page.fxml");
     }
 
     public static boolean isValidPassword(String password) {
