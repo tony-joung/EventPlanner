@@ -1,4 +1,6 @@
-package com.example.eventmanagementdemo.model;
+package com.example.eventmanagementdemo.dao.event;
+
+import com.example.eventmanagementdemo.model.Event;
 
 import java.util.List;
 
@@ -19,6 +21,12 @@ public interface IEventDAO {
      * @return All the events from the database.
      */
     List<Event> getEvents();
+
+    /**
+     * Retrieve all the upcoming event from the database.
+     * @return All the upcoming events from the database.
+     */
+    List<Event> getUpcomingEvents();
 
     /**
      * Retrieve the event based on the id.

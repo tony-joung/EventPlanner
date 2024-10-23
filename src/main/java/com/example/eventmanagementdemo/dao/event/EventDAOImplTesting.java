@@ -1,12 +1,12 @@
-package com.example.eventmanagementdemo;
+package com.example.eventmanagementdemo.dao.event;
 
 import com.example.eventmanagementdemo.model.Event;
-import com.example.eventmanagementdemo.model.IEventDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventDAOImpl implements IEventDAO {
+//Unused class
+public class EventDAOImplTesting implements IEventDAO {
 
     /**
      * A static list of contacts to be used as a mock database.
@@ -14,7 +14,7 @@ public class EventDAOImpl implements IEventDAO {
     public static final ArrayList<Event> eventList = new ArrayList<>();
     private static int autoIncrementedId = 0;
 
-    public EventDAOImpl() {
+    public EventDAOImplTesting() {
         // Add some initial contacts to the mock database
         /*addEvent(new Event("Event1", "Host1", "23/10/2025", "Venue1", "12345"));
         addEvent(new Event("Event2", "Host2", "24/10/2025", "Venue2", "12345"));
@@ -43,6 +43,14 @@ public class EventDAOImpl implements IEventDAO {
     @Override
     public List<Event> getEvents() {
         return eventList;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<Event> getUpcomingEvents() {
+        return null;
     }
 
     /**
