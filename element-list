@@ -1,0 +1,10 @@
+module:com.example.eventmanagementdemo
+com.example.eventmanagementdemo
+com.example.eventmanagementdemo.controller
+com.example.eventmanagementdemo.dao.event
+com.example.eventmanagementdemo.dao.role
+com.example.eventmanagementdemo.dao.user
+com.example.eventmanagementdemo.model
+com.example.eventmanagementdemo.service
+com.example.eventmanagementdemo.sqlite
+com.example.eventmanagementdemo.utils
