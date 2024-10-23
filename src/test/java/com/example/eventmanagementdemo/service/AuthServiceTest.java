@@ -1,5 +1,6 @@
 package com.example.eventmanagementdemo.service;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.eventmanagementdemo.dao.user.IUserDAO;
 import com.example.eventmanagementdemo.model.Role;

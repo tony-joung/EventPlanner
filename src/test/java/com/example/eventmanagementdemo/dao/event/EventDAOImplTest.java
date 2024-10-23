@@ -26,7 +26,14 @@ public class EventDAOImplTest {
         Statement stmt = connection.createStatement();
 
         // Create the events table
-        stmt.execute("CREATE TABLE events (id INT AUTO_INCREMENT PRIMARY KEY, eventName VARCHAR(255), hostedBy VARCHAR(255), date DATE, venue VARCHAR(255), phone VARCHAR(255))");
+        stmt.execute("CREATE TABLE events (" +
+                "    id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "    eventName TEXT," +
+                "    hostedBy TEXT," +
+                "    date TEXT," +
+                "    venue TEXT," +
+                "    phone TEXT" +
+                ");");
 
         // Initialize EventDAO
         eventDAO = new EventDAOImpl(connection);
@@ -65,7 +72,7 @@ public class EventDAOImplTest {
         assertEquals("Concert", retrievedEvent.getEventName(), "Event name should be 'Concert'");
     }
 
-    //@Test
+//    @Test
     public void testUpdateEvent() {
         // Create and add a new event
         Event event = new Event("Concert", "Music Group", LocalDate.of(2023, 12, 25), "Concert Hall", "1234567890");

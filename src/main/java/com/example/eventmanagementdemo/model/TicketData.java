@@ -72,4 +72,8 @@ public class TicketData {
     public IntegerProperty quantityProperty() {
         return quantity;
     }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
 }

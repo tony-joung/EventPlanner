@@ -77,4 +77,8 @@ public class BookingData {
     public void setTicketType(String ticketType) {
         this.ticketType.set(ticketType);
     }
+
+    public StringProperty ticketTypeProperty() {
+        return ticketType;
+    }
 }
