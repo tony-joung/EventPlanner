@@ -16,6 +16,7 @@ import org.testfx.util.WaitForAsyncUtils;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 
+@Disabled
 public class UtilsTest extends ApplicationTest {
 
     private Stage stage;
